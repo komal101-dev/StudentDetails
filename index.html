@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Display Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(176, 229, 208, 1) 42%, rgba(92, 202, 238, 0.41) 93.6%);
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .student-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .student-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .student-details {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .student-name {
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .student-info {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Information Display Board</h2>
+        <ul class="student-list" id="studentList">
+
+        </ul>
+    </div>
+
+    <script>
+
+        const students = [
+            { name: 'Komal', grade: 'A', age: 20 },
+            { name: 'Aniket', grade: 'B', age: 21 },
+            { name: 'Krishna', grade: 'C', age: 24 },
+            { name: 'Pranita', grade: 'C', age: 22 },
+            { name: 'Pavan', grade: 'A', age: 22 },
+            { name: 'Prajyota', grade: 'C', age: 21 },
+            { name: 'Shraddha', grade: 'A', age: 23 },
+        ];
+
+        function displayStudents() {
+            const studentList = document.getElementById('studentList');
+
+
+            studentList.innerHTML = '';
+
+
+            students.forEach(student => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('student-item');
+
+                const detailsContainer = document.createElement('div');
+                detailsContainer.classList.add('student-details');
+
+                const nameElement = document.createElement('div');
+                nameElement.classList.add('student-name');
+                nameElement.textContent = student.name;
+
+                const infoElement = document.createElement('div');
+                infoElement.classList.add('student-info');
+                infoElement.textContent = `Grade: ${student.grade} | Age: ${student.age}`;
+
+                detailsContainer.appendChild(nameElement);
+                detailsContainer.appendChild(infoElement);
+
+                listItem.appendChild(detailsContainer);
+
+
+                studentList.appendChild(listItem);
+            });
+        }
+
+        displayStudents();
+    </script>
+
+</body>
+
+</html>
